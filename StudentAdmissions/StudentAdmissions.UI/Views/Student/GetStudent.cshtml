@@ -1,0 +1,205 @@
+﻿@model StudentAdmissions.UI.Models.StudentModels.GetStudentViewModel
+@{
+    ViewData["Title"] = @Model.Student.FirstName + " " + @Model.Student.LastName;
+}
+<h4>@Model.Student.FirstName @Model.Student.LastName</h4>
+<h1>Student Profile</h1>
+
+<div class="row mt-5">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <form>
+            <fieldset disabled>
+                <div class="mb-3">
+                    <label asp-for="Student.FirstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" asp-for="Student.FirstName">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Student.LastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" asp-for="Student.LastName">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Student.Alias" class="form-label">Alias</label>
+                    <input type="text" class="form-control" id="Alias" asp-for="Student.Alias">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Student.DoB" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="DoB" asp-for="Student.DoB">
+                </div>
+            </fieldset>
+        </form>
+        <a class="btn btn-primary" asp-action="EditStudent" asp-controller="Student" asp-route-id="@Model.Student.StudentID">Edit Profile</a>
+        <a class="btn btn-danger" asp-action="DeleteStudent" asp-controller="Student" asp-route-id="@Model.Student.StudentID">Delete Account</a>
+    </div>
+</div>
+
+<div class="mt-5">
+    <ul class="nav nav-tabs" id="detail-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="view-powers" data-bs-toggle="tab" data-bs-target="#StudentPowerTable" type="button" role="tab">Powers</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="view-weaknesses" data-bs-toggle="tab" data-bs-target="#StudentWeaknessTable" type="button" role="tab">Weaknesses</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" id="view-sections" data-bs-toggle="tab" data-bs-target="#StudentSectionTable" type="button" role="tab">Sections</button>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-content" id="detail-tab-content">
+    <div class="tab-pane fade show active mt-5" role="tabpanel" id="StudentPowerTable">
+        @* <h2>Powers</h2> *@
+        <div>
+            <div>
+                @{
+                    if (Model.PowerMessage != "")
+                    {
+                        <div class="col-6 alert alert-info">
+                            @Model.PowerMessage
+                        </div>
+                    }
+                }
+            </div>
+            @{
+                if (Model.StudentPowers.Count != 0)
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Rating    </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var power in Model.StudentPowers)
+                                {
+                                    <tr>
+                                        <td>@power.PowerID</td>
+                                        <td>@power.Power.PowerName</td>
+                                        <td>@power.Power.PowerType.PowerTypeName</td>
+                                        <td>@power.Power.PowerDescription</td>
+                                        <td>@power.Rating</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a class="btn btn-outline-dark" asp-action="EditStudentPower" asp-controller="StudentPower" asp-route-id="@power.StudentID" asp-route-powerId="@power.PowerID">Edit</a>
+                                                <a class="btn btn-danger" asp-action="DeleteStudentPower" asp-controller="StudentPower" asp-route-id="@power.StudentID" asp-route-powerId="@power.PowerID">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+        <a class="btn btn-primary" asp-action="AddStudentPower" asp-controller="StudentPower" asp-route-id="@Model.Student.StudentID">Add Power</a>
+    </div>
+    <div class="tab-pane fade mt-5" role="tabpanel" id="StudentWeaknessTable">
+        @* <h2>Weakneses</h2> *@
+        <div>
+            <div>
+                @{
+                    if (Model.WeaknessMessage != "")
+                    {
+                        <div class="col-6 alert alert-info">
+                            @Model.WeaknessMessage
+                        </div>
+                    }
+                }
+            </div>
+            @{
+                if (Model.StudentWeaknesses.Count != 0)
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Risk Level</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var weakness in Model.StudentWeaknesses)
+                                {
+                                    <tr>
+                                        <td>@weakness.WeaknessID</td>
+                                        <td>@weakness.Weakness.WeaknessName</td>
+                                        <td>@weakness.Weakness.WeaknessType.WeaknessTypeName</td>
+                                        <td>@weakness.Weakness.WeaknessDescription</td>
+                                        <td>@weakness.RiskLevel</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a class="btn btn-outline-dark" asp-action="EditStudentWeakness" asp-controller="StudentWeakness" asp-route-id="@weakness.StudentID" asp-route-weaknessId="@weakness.WeaknessID">Edit</a>
+                                                <a class="btn btn-danger" asp-action="DeleteStudentWeakness" asp-controller="StudentWeakness" asp-route-id="@weakness.StudentID" asp-route-weaknessId="@weakness.WeaknessID">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+        <a class="btn btn-primary" asp-action="AddStudentWeakness" asp-controller="StudentWeakness" asp-route-id="@Model.Student.StudentID">Add Weakness</a>
+    </div>
+    <div class="tab-pane fade mt-5" role="tabpanel" id="StudentSectionTable">
+    @* <h2>Sections</h2> *@
+        <div>
+            <div>
+                @{
+                    if (Model.SectionMessage != "")
+                    {
+                        <div class="col-6 alert alert-info">
+                            @Model.SectionMessage
+                        </div>
+                    }
+                }
+            </div>
+            @{
+                if(Model.Sections.Count != 0)
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Course Name</th>
+                                <th>Instructor</th>
+                                <th>Dates</th>
+                                <th>Grade</th>
+                                <th>Absenses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var studentSection in Model.Sections)
+                                {
+                                    <tr>
+                                        <td>@studentSection.Section.SectionID</td>
+                                        <td><a asp-controller="Course" asp-action="GetCourseSections" asp-route-id="@studentSection.Section.CourseID">@studentSection.Section.Course.CourseName</a></td>
+                                        <td>@studentSection.Section.Instructor.Alias</td>
+                                        <td>@studentSection.Section.StartDate - @studentSection.Section.EndDate</td>
+                                        <td>@studentSection.Grade</td>
+                                        <td>@studentSection.Absences</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+        </div>
+        <a class="btn btn-primary" asp-action="GetOpenSections" asp-controller="Student" asp-route-id="@Model.Student.StudentID">Open Sections</a>
+    </div>
+</div>
+   

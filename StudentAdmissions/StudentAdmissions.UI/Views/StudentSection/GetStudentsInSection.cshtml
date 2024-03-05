@@ -1,0 +1,70 @@
+﻿@model StudentAdmissions.Application.DTOs.StudentsInSection
+   
+@{
+    ViewData["Title"] = "Section - " + @Model.Section.SectionID;
+}
+
+<h4>Section @Model.Section.SectionID</h4>
+<h1>Section Info</h1>
+<hr />
+
+<div class="mb-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+                <th>Credits</th>
+                <th>Dates</th>
+                <th>Times</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.CourseName</td>
+                <td>@Model.SubjectName</td>
+                <td>@Model.InstructorAlias</td>
+                <td>@Model.Section.Course.Credits</td>
+                <td>@Model.Section.StartDate - @Model.Section.EndDate</td>
+                <td>@Model.Section.StartTime - @Model.Section.EndTime</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mt-2 mb-5 p-3">
+        <h4>Course Description</h4>
+        <p class="text-secondary">@Model.Section.Course.CourseDescription</p>
+    </div>
+</div>
+
+<div class="mt-3">
+    <h1>Students Enrolled</h1>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Alias</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td><a asp-controller="Student" asp-action="GetStudent" asp-route-id="@student.StudentID">@student.StudentID</a></td>
+                    <td>@student.Student.FirstName</td>
+                    <td>@student.Student.LastName</td>
+                    <td>@student.Student.Alias</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @* @{
+        if(Model.EnrollmentStatus.ToString() == "Open")
+        {
+            <a class="btn btn-primary" asp-controller="StudentSection" asp-action="AddStudentToSection" asp-route-courseId="@Model.Section.CourseID" asp-route-sectionId="@Model.Section.SectionID">Enroll Student</a>
+        }
+    } *@
+</div>

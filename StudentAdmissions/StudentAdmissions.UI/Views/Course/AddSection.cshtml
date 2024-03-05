@@ -1,0 +1,51 @@
+﻿@model StudentAdmissions.UI.Models.CourseModels.AddSectionViewModel
+@{
+    ViewData["Title"] = "Add Section";
+}
+
+<h1>Add New Section</h1>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 form-horizontial">
+        <form asp-controller="Course" asp-action="AddSection" asp-route-id="@Model.CourseID" method="post">
+            <input type="hidden" id="CourseID" asp-for="CourseID"/>
+            <div class="mb-3">
+                <label asp-for="InstructorID" class="form-label">Instructor Name</label>
+                <select class="form-select" id="InstructorID" asp-for="InstructorID">
+                    <option selected>Choose Instructor</option>
+                    @foreach (var instructor in Model.Instructors)
+                    {
+                        <option value="@instructor.InstructorID">@instructor.Alias</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="StartDate" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="StartDate" asp-for="StartDate">
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EndDate" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="EndDate" asp-for="EndDate">
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="StartTime" class="form-label">Start Time</label>
+                <input type="time" class="form-control" id="StartTime" asp-for="StartTime">
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="EndTime" class="form-label">End Time</label>
+                <input type="time" class="form-control" id="EndTime" asp-for="EndTime">
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+
+            <div mt-5>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-controller="Course" asp-action="GetSection" asp-route-id="@Model.CourseID">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+

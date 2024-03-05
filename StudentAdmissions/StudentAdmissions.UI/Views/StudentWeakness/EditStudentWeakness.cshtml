@@ -1,0 +1,21 @@
+﻿@model StudentAdmissions.Application.Entities.StudentWeakness
+
+@{
+    ViewData["Title"] = "Edit Weakness - " + @Model.Student.FirstName + " " + Model.Student.LastName;
+}
+
+<h4>@Model.Student.FirstName @Model.Student.LastName</h4>
+<h1>Edit @Model.Weakness.WeaknessName Risk Level</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+        <form asp-controller="StudentWeakness" asp-action="EditStudentWeakness" asp-route-id="@Model.StudentID" asp-route-weaknessId="@Model.WeaknessID" method="post">
+            <input type="hidden" id="StudentID" asp-for="StudentID" />
+            <div class="mb-3">
+                <label asp-for="RiskLevel" class="form-label">Risk Level</label>
+                <input type="text" class="form-control" id="RiskLevel" asp-for="RiskLevel">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a type="button" class="btn btn-secondary" asp-controller="Student" asp-action="GetStudent" asp-route-id="@Model.StudentID">Cancel</a>
+        </form>
+    </div>
+</div>

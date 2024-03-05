@@ -1,0 +1,21 @@
+﻿@model StudentAdmissions.Application.Entities.StudentPower
+
+@{
+    ViewData["Title"] = "Delete Power - " + @Model.Student.FirstName + " " + Model.Student.LastName;
+}
+
+<h1>Remove Student Power</h1>
+<div class="row mb-5">
+    <div class="col-sm-12 col-md-6 col-lg-8 mt-2">
+        <form asp-controller="StudentPower" asp-action="DeleteStudentPower" asp-route-id="@Model.StudentID" method="post">
+            <h5>Are you sure you want to delete @Model.Power.PowerName from @Model.Student.FirstName @Model.Student.LastName's powers?</h5>
+            <div class="col-6">
+                <div class="alert alert-danger my-3" role="alert">This action cannot be undone!</div>
+            </div>
+            <input type="hidden" asp-for="StudentID" />
+            <button class="btn btn-danger">Delete</button>
+            <a class="btn btn-secondary" asp-action="GetStudent" asp-controller="Student" asp-route-id="@Model.StudentID" btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+

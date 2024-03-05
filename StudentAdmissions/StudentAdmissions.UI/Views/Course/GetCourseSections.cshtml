@@ -1,0 +1,87 @@
+﻿@model StudentAdmissions.UI.Models.CourseModels.GetSectionsViewModel
+
+@{
+    ViewData["Title"] = "Sections - " + @Model.Course.CourseName;
+}
+
+<h4>@Model.Course.CourseName</h4>
+<h1>Course Info</h1>
+
+<div class="mb-3">
+    <table class="table">
+        <thead>
+            <tr class="table">
+                <th>Course Name</th>
+                <th>Subject</th>
+                <th>Credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Course.CourseName</td>
+                <td>@Model.Course.Subject.SubjectName</td>
+                <td>@Model.Course.Credits</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mt-2 mb-5 p-3">
+        <h4>Course Description</h4>
+        <p class="text-secondary">@Model.Course.CourseDescription</p>
+    </div>
+</div>
+
+<h1>Sections</h1>
+<div>
+    <div class="mt-2">
+        @{
+            if (Model.Message != "")
+            {
+                <div class="col-6 alert alert-info">
+                    @Model.Message
+                </div>
+            }
+        }
+    </div>
+</div>
+@{
+    if (Model.Sections.Count != 0)
+    {
+        <div>
+            <table class="table">
+                <thead>
+                    <tr class="table">
+                        <th>Section ID</th>
+                        <th>Instructor</th>
+                        <th>Dates</th>
+                        <th>Times</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model.Sections)
+                    {
+                        <tr>
+                            <td><a asp-controller="StudentSection" asp-action="GetStudentsInSection" asp-route-courseId="@course.CourseID" asp-route-sectionId="@course.SectionID">@course.SectionID</a></td>
+                            <td>@course.Instructor.Alias</td>
+                            <td>@course.StartDate - @course.EndDate</td>
+                            <td>@course.StartTime - @course.EndTime</td>
+                            @{
+                                if(@course.EndDate >= DateOnly.FromDateTime(DateTime.Today))
+                                {
+                                    <td>
+                                        <h6><span class="badge bg-success">Enrollment Open</span></h6>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+<a class="btn btn-primary" asp-controller="Course" asp-action="AddSection" asp-route-id="@Model.Course.CourseID">Add Section</a>

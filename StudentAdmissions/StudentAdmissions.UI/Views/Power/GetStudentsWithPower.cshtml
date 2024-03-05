@@ -1,0 +1,30 @@
+﻿@model StudentAdmissions.Application.DTOs.StudentsWithPower
+
+@{
+    ViewData["Title"] = "Students - " + Model.PowerName;
+}
+
+<div class="mb-3">
+    <h1>Students with @Model.PowerName</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Alias</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.StudentPowers)
+            {
+                <tr>
+                    <td>@student.StudentID</td>
+                    <td>@student.Student.FirstName</td>
+                    <td>@student.Student.LastName</td>
+                    <td>@student.Student.Alias</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

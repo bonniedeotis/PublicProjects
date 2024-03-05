@@ -1,0 +1,33 @@
+﻿@model StudentAdmissions.Application.Entities.Student
+
+@{
+    ViewData["Title"] = "Edit - " + @Model.FirstName + " " + @Model.LastName;
+}
+
+<h4>@Model.FirstName @Model.LastName</h4>
+<h1>Edit Student Record</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <form asp-controller="Student" asp-action="EditStudent" asp-route-id="@Model.StudentID" method="post">
+           <input type="hidden" id="StudentID" asp-for="StudentID"/>
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="FirstName" asp-for="FirstName">
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="LastName" asp-for="LastName">
+            </div>
+            <div class="mb-3">
+                <label asp-for="Alias" class="form-label">Alias</label>
+                <input type="text" class="form-control" id="Alias" asp-for="Alias">
+            </div>
+            <div class="mb-3">
+                <label asp-for="DoB" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="DoB" asp-for="DoB">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-secondary" asp-action="ListStudents" asp-controller="Student" asp-route-id="@Model.StudentID">Cancel</a>
+        </form>
+    </div>
+</div>

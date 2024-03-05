@@ -1,0 +1,42 @@
+﻿@model StudentAdmissions.UI.Models.StudentModels.AddOrUpdateStudent
+
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<h1>Add New Student</h1>
+@Html.ValidationSummary(true, "", new {@class = "text-danger"})
+@Html.HiddenFor(model => model.StudentID)
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 form-horizontial">
+        <form asp-controller="Student" asp-action="AddStudent" method="post">
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="FirstName" asp-for="FirstName">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="LastName" asp-for="LastName">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Alias" class="form-label">Alias</label>
+                <input type="text" class="form-control" id="Alias" asp-for="Alias">
+                <span asp-validation-for="Alias" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DoB" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="DoB" asp-for="DoB">
+                <span asp-validation-for="DoB" class = "text-danger"></span>
+            </div>
+
+            <div mt-5>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-controller="Student" asp-action="ListStudents">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

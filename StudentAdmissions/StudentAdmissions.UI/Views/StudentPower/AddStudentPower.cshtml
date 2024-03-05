@@ -1,0 +1,52 @@
+﻿@model StudentAdmissions.UI.Models.StudentPowerModels.AddPowerToStudentViewModel
+
+@{
+    ViewData["Title"] = "Add Power - " + @Model.StudentName;
+}
+
+<h4>@Model.StudentName</h4>
+<h1>Add New Student Power</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mt-2">
+        <form asp-controller="StudentPower" asp-action="AddStudentPower" asp-route-id="@Model.StudentID" method="post">
+            <input type="hidden" id="StudentID" asp-for="StudentID" />
+            <div class="mb-3">
+                <label asp-for="Powers" class="form-label">Power Name</label>
+                <select class="form-select" id="PowerName" asp-for="PowerID">
+                    <option selected>Choose Power</option>
+                    @foreach (var power in Model.Powers)
+                    {
+                        <option value="@power.PowerID">@power.PowerName</option>
+                    }
+                </select>
+            </div>
+           @*  <div class="form-check mt-5">
+                <div class="row mb-1">
+                    <div class="col-5">
+                        <h4>Power Name</h4>
+                    </div>
+                    <div class="col-1">
+                        <h4>Rating</h4>
+                    </div>
+                </div>
+                @foreach (var power in Model.Powers)
+                {
+                    <div class="row">
+                        <div class="col-5 ps-5">
+                                <input class="form-check-input" type="checkbox" value="@power.PowerID"/>@power.PowerName
+                        </div>
+                        <div class="col-1">
+                                <input class="form-text" value="" id="rating"/>
+                        </div>
+                    </div>
+                }
+            </div> *@
+            <div class="mb-3">
+                <label asp-for="Rating" class="form-label">Rating</label>
+                <input type="text" class="form-control" id="Rating" asp-for="Rating">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-secondary" asp-controller="Student" asp-action="GetStudent" asp-route-id="@Model.StudentID">Cancel</a>
+        </form>
+    </div>
+</div>

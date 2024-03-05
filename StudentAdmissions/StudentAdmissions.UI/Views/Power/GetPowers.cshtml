@@ -1,0 +1,36 @@
+﻿@model StudentAdmissions.UI.Models.PowerModels.ListPowersViewModel
+
+@{
+    ViewData["Title"] = "Powers";
+}
+
+<h1>Powers</h1>
+<div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-12">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Power Name</th>
+                <th>Power Description</th>
+                <th>Power Type</th>
+                <th>Students</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var power in Model.Powers)
+            {
+                <tr>
+                    <td>@power.PowerID</td>
+                    <td>@power.PowerName</td>
+                    <td>@power.PowerDescription</td>
+                    <td>@power.PowerType.PowerTypeName</td>
+                    <td>
+                        <a role="button" class="btn btn-primary btn-sm" asp-action="GetStudentsWithPower" asp-controller="Power" asp-route-powerId="@power.PowerID">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        </table>
+    </div>
+</div>

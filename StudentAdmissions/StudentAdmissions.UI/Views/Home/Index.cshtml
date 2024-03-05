@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<header>
+    <style>
+      body{
+          background-color: black;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="Index.cshtml.css" rel="stylesheet">
+</header>
+    
+
+
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+    <div class="col p-lg-3 mx-auto my-3">
+        <h1 class="display-4 fw-normal text-white">Fourth Wall Academy</h1>
+        <p class="lead fw-normal text-light mb-5">We help develop future super villians!</p>
+        <a role="button" class="btn btn-lg btn-primary" asp-area="" asp-controller="Student" asp-action="EnrollStudent">Enroll now</a>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+<div class="d-md-flex flex-md-equal w-200 my-md-3 ps-md-3">
+    <div class="bg-light bg-gradient t bg-gradient me-md-3 pt-1 px-3 pt-md-2 px-md-5 text-center overflow-hidden">
+        <div class="my-3">
+            <h2 class="display-5">Powers</h2>
+            <p class="lead">We train to maximize the potential of each power!</p>
+            <a role="button" class="btn btn-dark" asp-area="" asp-controller="Power" asp-action="GetPowers">Powers</a>
+        </div>
+    </div><div class="bg-dark bg-gradient me-md-3 pt-2 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 p-2">
+            <h2 class="display-5">Weaknesses</h2>
+            <p class="lead">We help students defend against their weaknesses!</p>
+            <a role="button" class="btn btn-light" asp-area="" asp-controller="Weakness" asp-action="GetWeaknesses">Weaknesses</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark bg-gradient me-md-3 pt-1 px-3 pt-md-1 px-md-5 text-center text-white overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5">Courses</h2>
+            <p class="lead">Over 30 available!</p>
+            <a role="button" class="btn btn-light" asp-area="" asp-controller="Course" asp-action="GetCourses">Courses</a>
+        </div>
+    </div><div class="bg-light me-md-3 pt-1 px-3 pt-md-1 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+            <a role="button" class="btn btn-dark" asp-area="" asp-controller="Course" asp-action="GetCourses">Button</a>
+        </div>
+    </div>
+</div>

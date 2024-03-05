@@ -1,0 +1,40 @@
+﻿@model StudentAdmissions.UI.Models.StudentModels.OpenSectionsViewModel
+
+@{
+    ViewData["Title"] = "Open Sections";
+}
+
+<h4>@Model.StudentName</h4>
+<h1>Open Sections</h1>
+
+<div class="mb-3">
+    <table class="table table-striped">
+        <thead>
+            <tr class="table">
+                <th>Section ID</th>
+                <th>Course Name</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+                <th>Credits</th>
+                <th>Dates</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(var openSect in Model.OpenSections)
+                {
+                    <tr>
+                        <td><a asp-action="GetStudentsInSection" asp-controller="StudentSection" asp-route-courseId="@openSect.CourseID" asp-route-sectionId="@openSect.SectionID">@openSect.SectionID</a></td>
+                        <td><a asp-action="GetCourseSections" asp-controller="Course" asp-route-id="@openSect.CourseID">@openSect.Course.CourseName</a></td>
+                        <td>@openSect.Course.Subject.SubjectName</td>
+                        <td>@openSect.Instructor.Alias</td>
+                        <td>@openSect.Course.Credits</td>
+                        <td>@openSect.StartDate - @openSect.EndDate <br /> @openSect.StartTime - @openSect.EndTime</td>
+                        <td><a class="btn btn-primary" asp-action="AddStudentToSection" asp-controller="StudentSection" asp-route-courseId="@openSect.CourseID" asp-route-sectionId="@openSect.SectionID" asp-route-studentId="@Model.StudentID">Enroll</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

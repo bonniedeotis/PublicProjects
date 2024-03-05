@@ -1,0 +1,34 @@
+﻿@model List<StudentAdmissions.Application.Entities.Course>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h1>Courses</h1>
+<div class="m-1">
+    <a class="btn btn-primary" role="button" asp-controller="Course" asp-action="AddCourse">Add Course</a>
+</div>
+<div class="mb-3">
+    <table class="table table-striped">
+        <thead>
+            <tr class="table">
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Subject</th>
+                <th>Credits</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td><a asp-controller="Course" asp-action="GetCourseSections" asp-route-id="@course.CourseID">@course.CourseID</a></td>
+                    <td>@course.CourseName</td>
+                    <td>@course.Subject.SubjectName</td>
+                    <td>@course.Credits</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

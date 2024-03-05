@@ -1,0 +1,71 @@
+﻿@model StudentAdmissions.Application.Entities.Student
+@{
+    ViewData["Title"] = "Welcome " + @Model.Alias;
+}
+
+<div class="mb-5">
+    <h1 class="display-3">Welcome <small class="text-primary">@Model.Alias</small></h1>
+</div>
+
+<div class="p-3 rounded shadow bg-primary bg-opacity-25">
+<h2 class="mb-3">Getting Started</h2>
+<p class="lead">
+    Thank you for choosing Fourth Wall Academy. We are thrilled to have you amoung our elite group of burgeoning super villians!
+    Now that you are enrolled, you'll want to head over to your new account page and tell us more about yourself. 
+    Here is a quick overview of features on your account page.</p>
+</div>
+<div class="p-5">
+    <div>
+        <h4 class="text-primary">Profile</h4>
+        <div class="ps-2">
+            <p>Your profile information (name, alias, birthdate) can be edited at any time by clicking the Edit button on your account page.</p>
+        </div>
+    </div>
+
+    <div>
+        <h4 class="text-primary">Powers</h4>
+        <div class="ps-2">
+            <p>
+                At the bottom of the account page you can view, add, or modify your powers.
+                We'll help you learn to fully utilize each one of your impressive powers!
+            </p>
+            <div class="ps-3">
+                <p><strong>Options Include:</strong></p>
+                <ul>
+                    <li>Pyrokenesis</li>
+                    <li>Illusion Casting</li>
+                    <li>Cybernetic Enhancement</li>
+                    <li class="text-secondary"><em>+ many more!</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h4 class="text-primary">Weaknesses</h4>
+        <div class="ps-2">
+            <p>
+                Similar to powers, you have the ability to view, add, or modify a weakness.
+                Be honest here. We want ensure you are prepared to defend against your weaknesses.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h4 class="text-primary">Sections</h4>
+        <div class="ps-2">
+            <p>
+                Lastly, you'll want to enroll in some sections to start taking advantage of our awesome courses!
+                This tab will show any sessions you are currently enrolled in and provide a link to add more.
+                Click the <em>Add Section</em> button see a list of available sections being offered right now.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <h4 class="text-secondary">Head over to your account page now!</h4>
+        <a class="btn btn-primary" asp-controller="Student" asp-action="GetStudent" asp-route-id="@Model.StudentID">Go to Account</a>
+    </div>
+</div>
+

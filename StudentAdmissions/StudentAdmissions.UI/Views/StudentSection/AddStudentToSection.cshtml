@@ -1,0 +1,65 @@
+﻿@model StudentAdmissions.UI.Models.StudentSectionModels.AddStudentToSectionViewModel
+@{
+    ViewData["Title"] = "Enroll Student - Section " + Model.SectionID;
+}
+
+@{
+    if(Model.Students.Count == 1)
+    {
+        <h1>@Model.Students.First().FirstName @Model.Students.First().LastName - Section @Model.SectionID Enrollment</h1>
+    }
+    else
+    {
+        <h1>Section @Model.SectionID Enrollment</h1>
+    }
+}
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="card col-5 mt-5">
+    <div class="card-header h3">
+        @Model.CourseName
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-4">Instructor Name</dt>
+            <dd class="col-8">@Model.SectionInfo.InstructorAlias</dd>
+            <dt class ="col-4">Dates</dt>
+            <dd class="col-8">@Model.SectionInfo.StartDate - @Model.SectionInfo.EndDate</dd>
+            <dt class="col-4">Times</dt>
+            <dd class="col-8">@Model.SectionInfo.StartTime - @Model.SectionInfo.EndTime</dd>
+        </dl>
+        
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col-sm-12 col-md-6 col-lg-4 form-horizontial">
+        <form asp-controller="StudentSection" asp-action="AddStudentToSection" asp-route-courseId="@Model.CourseID" asp-route-sectionId="@Model.SectionID" method="post">
+            <input type="hidden" id="SectionID" asp-for="SectionID" />
+            
+                @{
+                    if(Model.Students.Count == 1)
+                    {
+                        <h4 class="mb-3">Do you wish to enroll in this section?</h4>
+                        <input type="hidden" id="StudentID" asp-for="StudentID" />
+                    }
+                    else
+                    {
+                    <div class="mb-3">
+                        <label asp-for="StudentID" class="form-label h4">Select Student to Add</label>
+                        <select class="form-select" id="StudentID" asp-for="StudentID">
+                            <option selected>Choose Student</option>
+                            @foreach (var student in Model.Students)
+                            {
+                                <option value="@student.StudentID">@student.FirstName @student.LastName</option>
+                            }
+                        </select>
+                    </div>
+                    }
+                }
+            <div mt-5>
+                <button type="submit" class="btn btn-primary">Enroll</button>
+                <a class="btn btn-secondary" asp-controller="StudentSection" asp-action="GetStudentsInSection" asp-route-courseId="@Model.CourseID" asp-route-sectionId="@Model.SectionID">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
