@@ -29,7 +29,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -63,7 +63,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception("Error getting student information");
+                return StatusCode(500, "Error getting student information");
             }
         }
 
@@ -95,8 +95,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception("Error creating new student record");
+                return StatusCode(500, "Error creating new student record");
             }
         }
 
@@ -112,7 +111,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -128,8 +127,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -145,7 +143,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -161,8 +159,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -196,12 +193,12 @@ namespace StudentAdmissions.UI.Controllers
                 }
                 else
                 {
-                    return StatusCode(500, "Something went wrong enrolling the student.");
+                    return StatusCode(400, "Something went wrong enrolling the student.");
                 }
             }
             else
             {
-                throw new Exception("Error enrolling new student");
+                return StatusCode(500, "Error enrolling new student");
             }
         }
 

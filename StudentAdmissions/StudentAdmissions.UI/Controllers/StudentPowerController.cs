@@ -41,7 +41,7 @@ namespace StudentAdmissions.UI.Controllers
 
             else
             {
-                throw new Exception($"Error loading add powers.");
+                return StatusCode(500, $"Error loading add powers.");
             }
         }
 
@@ -69,8 +69,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -96,7 +95,7 @@ namespace StudentAdmissions.UI.Controllers
                 }
             }
 
-            throw new Exception(result.Message);
+            return StatusCode(500, $"Internal Error: {result.Message}");
         }
 
         [Route("{id}/powers/remove/{powerId}")]
@@ -111,8 +110,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -128,7 +126,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -144,8 +142,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
     }

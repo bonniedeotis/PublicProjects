@@ -68,8 +68,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -95,7 +94,7 @@ namespace StudentAdmissions.UI.Controllers
                 }
             }
 
-            throw new Exception(result.Message);
+            return StatusCode(500, $"Internal Error: {result.Message}");
         }
 
         [Route("{id}/weaknesses/remove/{weaknessId}")]
@@ -110,8 +109,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -127,7 +125,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -143,8 +141,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                // todo: add validation messages to form later
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
     }

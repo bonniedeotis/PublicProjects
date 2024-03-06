@@ -1,6 +1,7 @@
 ﻿using StudentAdmissions.Application.Interfaces;
 using StudentAdmissions.UI.Models.WeaknessModels;
 using Microsoft.AspNetCore.Mvc;
+using StudentAdmissions.Application.DTOs;
 
 namespace StudentAdmissions.UI.Controllers
 {
@@ -29,7 +30,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -45,7 +46,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(model.Message);
+                return StatusCode(500, $"Internal Error: {model.Message}");
             }
         }
 

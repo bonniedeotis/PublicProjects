@@ -30,7 +30,7 @@ namespace StudentAdmissions.UI.Controllers
             }
             else
             {
-                throw new Exception(result.Message);
+                return StatusCode(500, $"Internal Error: {result.Message}");
             }
         }
 
@@ -61,20 +61,6 @@ namespace StudentAdmissions.UI.Controllers
                     return StatusCode(500, $"Internal Error: {studentResult.Message}");
                 }
             }
-
-            //if (studentId == null)
-            //{
-            //    var studentsResult = _studentService.GetAllStudents();
-
-            //    if (studentsResult.Ok)
-            //    {
-            //        model.Students = studentsResult.Data;
-            //    }
-            //    else
-            //    {
-            //        return StatusCode(500, $"Internal Error: {studentsResult.Message}");
-            //    }
-            //}
 
             var courseResult = _courseService.GetCourse(courseId);
 
