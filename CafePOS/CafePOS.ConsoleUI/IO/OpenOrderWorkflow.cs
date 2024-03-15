@@ -10,6 +10,7 @@ namespace CafePOS.ConsoleUI.IO
             List<ItemToAdd> itemsAddedToOrder = new List<ItemToAdd>();
 
             bool haveOpenOrders = ListOpenOrders(service, false, "Add Items to Open Order");
+            
             if (!haveOpenOrders)
             {
                 Utilities.AnyKey();
@@ -23,7 +24,7 @@ namespace CafePOS.ConsoleUI.IO
                 Utilities.DisplayMenuHeader("Add Items to Open Order");
 
                 int categoryId = ListandSelectCategory(service);
-                // add loop here
+                
                 GetAvailableItemsByCategory(service, categoryId);
 
                 ItemToAdd orderedItem = new ItemToAdd();
