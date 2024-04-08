@@ -6,7 +6,7 @@ Welcome! These are a few examples of projects that I have created while learning
 Created a ASP.NET MVC project for a student admissions website using **C#, Razor, and Entity Framework** to perform a variety of CRUD services on a local database running in **Docker**. The admissions site adds new students and provides access to their profile features and class enrollment.
 
 ## Cafe Point of Sale
-#### *3-Tier Console App*
+#### *N-Tier Console App*
 Designed a **3-tier C# application** with a console interface that performed cafe order workflow tasks, showed time-based menu options, and had basic sales reporting. Also, created a training mode implementation that swapped in Lists in place of DB tables and allowed a new user to learn the system without affecting the database.
 
 ## Library Management
