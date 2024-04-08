@@ -1,11 +1,6 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data.Repositories.EF_Repositories
 {

@@ -1,8 +1,6 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
 using LibraryManagement.Core.Interfaces.Services;
-using Microsoft.IdentityModel.Tokens;
-using System.Data.SqlTypes;
 
 namespace LibraryManagement.Application.Services
 {
@@ -24,7 +22,7 @@ namespace LibraryManagement.Application.Services
                 var borrower = _checkoutRepository.GetBorrowerByEmail(email);
 
                 var media = _mediaRepository.GetItem(itemID);
-                
+
                 if (media == null)
                 {
                     return ResultFactory.Fail<DateTime>($"No item with ID {itemID} exists.");
@@ -34,9 +32,9 @@ namespace LibraryManagement.Application.Services
                 {
                     return ResultFactory.Fail<DateTime>("That item is not available for checkout at this time.");
                 }
-                
+
                 var log = _checkoutRepository.Checkout(itemID, borrower);
-                
+
                 if (log == null)
                 {
                     return ResultFactory.Fail<DateTime>("Error during checkout.");
@@ -61,7 +59,7 @@ namespace LibraryManagement.Application.Services
                 }
                 return ResultFactory.Success(availableMedia);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ResultFactory.Fail<List<Media>>(ex.Message);
             }
@@ -78,13 +76,13 @@ namespace LibraryManagement.Application.Services
                 }
                 return ResultFactory.Success(borrower);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ResultFactory.Fail<Borrower>(ex.Message);
             }
         }
 
-        
+
 
         public Result<List<CheckoutLog>> GetAllCheckedOutMedia()
         {
@@ -108,12 +106,12 @@ namespace LibraryManagement.Application.Services
             try
             {
                 var returnItem = _checkoutRepository.GetCheckedOutItem(itemID);
-                
-                if (returnItem == null) 
+
+                if (returnItem == null)
                 {
                     return ResultFactory.Fail($"Item ID {itemID} is not currently checked out. Try again.");
                 }
-                
+
                 _checkoutRepository.Return(itemID);
 
                 return ResultFactory.Success();
@@ -154,7 +152,7 @@ namespace LibraryManagement.Application.Services
                 }
                 return ResultFactory.Success(false);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return ResultFactory.Fail<bool>(ex.Message);
             }

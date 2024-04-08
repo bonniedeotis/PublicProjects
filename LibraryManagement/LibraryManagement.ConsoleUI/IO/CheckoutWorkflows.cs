@@ -1,11 +1,5 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.ConsoleUI.IO
 {
@@ -100,7 +94,7 @@ namespace LibraryManagement.ConsoleUI.IO
         public static void Checkout(ICheckoutService service)
         {
             Console.Clear();
-            
+
             var email = Utilities.GetRequiredString("Enter borrower email: ");
             var borrowerStatus = service.GetBorrowerStatus(email);
 
@@ -155,7 +149,7 @@ namespace LibraryManagement.ConsoleUI.IO
 
                 var email = Utilities.GetRequiredString("Enter borrower email: ");
                 var borrowerResult = service.GetBorrowerByEmail(email);
-                
+
                 if (borrowerResult.Ok)
                 {
                     do
@@ -166,7 +160,7 @@ namespace LibraryManagement.ConsoleUI.IO
                             DisplayItemsCheckedOutToBorrower(borrowedItems.Data);
 
                             var itemID = Utilities.GetPositiveInteger("\nSelect the item ID being returned: ");
-                            
+
                             var returnResult = service.Return(itemID);
                             if (returnResult.Ok)
                             {
@@ -188,7 +182,7 @@ namespace LibraryManagement.ConsoleUI.IO
                             Utilities.AnyKey();
                             return;
                         }
-                        
+
                     } while (true);
                 }
                 else

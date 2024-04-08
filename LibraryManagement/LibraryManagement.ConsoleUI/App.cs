@@ -1,17 +1,12 @@
 ﻿using LibraryManagement.Application;
 using LibraryManagement.ConsoleUI.IO;
 using LibraryManagement.Core.Interfaces.Application;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.ConsoleUI
 {
     public class App
     {
-        readonly IAppConfiguration  _config;
+        readonly IAppConfiguration _config;
         readonly ServiceFactory _serviceFactory;
 
         public App()

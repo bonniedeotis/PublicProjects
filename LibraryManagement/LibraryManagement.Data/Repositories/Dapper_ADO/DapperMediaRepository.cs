@@ -1,13 +1,8 @@
-﻿using Dapper.Transaction;
-using Dapper;
+﻿using Dapper;
+using Dapper.Transaction;
 using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data.Repositories.DapperAndADO
 {

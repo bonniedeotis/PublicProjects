@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibraryManagement.ConsoleUI.IO
+﻿namespace LibraryManagement.ConsoleUI.IO
 {
     public class Utilities
     {
@@ -60,7 +53,7 @@ namespace LibraryManagement.ConsoleUI.IO
             Console.Write("\nProceed with deletion of borrower account? Y/N: ");
             Console.ResetColor();
             input = Console.ReadLine().ToUpper();
-            if(!string.IsNullOrWhiteSpace(input) && input == "Y")
+            if (!string.IsNullOrWhiteSpace(input) && input == "Y")
             {
                 return true;
             }
@@ -83,7 +76,7 @@ namespace LibraryManagement.ConsoleUI.IO
         public static bool Continue(string prompt)
         {
             var answer = GetRequiredString(prompt).ToUpper();
-            if(answer == "Y")
+            if (answer == "Y")
             {
                 return true;
             }

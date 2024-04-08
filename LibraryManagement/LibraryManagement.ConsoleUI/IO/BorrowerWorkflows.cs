@@ -1,18 +1,11 @@
-﻿using LibraryManagement.Application;
-using LibraryManagement.Core.Entities;
+﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Services;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.ConsoleUI.IO
 {
     public class BorrowerWorkflows
     {
-        
+
         public static void BorrowerMenuChoice(IBorrowerService service)
         {
             int choice = 0;
@@ -20,7 +13,7 @@ namespace LibraryManagement.ConsoleUI.IO
             while (choice != 6)
             {
                 choice = Menus.BorrowerManagementMenu();
-            
+
                 switch (choice)
                 {
 

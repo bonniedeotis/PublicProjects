@@ -1,8 +1,8 @@
-﻿using LibraryManagement.Core.Entities;
+﻿using Dapper;
+using Dapper.Transaction;
+using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
 using Microsoft.Data.SqlClient;
-using Dapper;
-using Dapper.Transaction;
 
 namespace LibraryManagement.Data.Repositories.DapperAndADO
 {
@@ -62,7 +62,7 @@ namespace LibraryManagement.Data.Repositories.DapperAndADO
 
                 cn.Open();
 
-                using(var transaction = cn.BeginTransaction())
+                using (var transaction = cn.BeginTransaction())
                 {
                     transaction.Execute(sql1, parameter);
                     transaction.Execute(sql2, parameter);

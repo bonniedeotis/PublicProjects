@@ -2,13 +2,7 @@
 using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Services;
 using LibraryManagement.Data.Repositories.Test_Repositories;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Test
 {
@@ -18,7 +12,7 @@ namespace LibraryManagement.Test
         private IMediaService _service;
 
         private List<Media> getMediaItem1 = new List<Media> {
-            new Media { 
+            new Media {
                 MediaID = 1, MediaTypeID = 1, IsArchived = false, Title = "The World of Coffee",
                 CheckoutLogs = new List<CheckoutLog> {
                     new CheckoutLog {

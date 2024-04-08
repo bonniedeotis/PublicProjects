@@ -1,25 +1,19 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data.Repositories.Test_Repositories
 {
     public class TestMediaRepository : IMediaRespository
     {
-        List<Media> medias = new List<Media> { 
+        List<Media> medias = new List<Media> {
             new Media { MediaID = 1, MediaTypeID = 2, IsArchived = false, Title = "Chinatown",
-                CheckoutLogs = new List<CheckoutLog> { 
+                CheckoutLogs = new List<CheckoutLog> {
                     new CheckoutLog {
-                        CheckoutDate = new DateTime(2024, 1, 24), 
-                        DueDate = new DateTime(2024, 1, 30), 
-                        ReturnDate = null }  }}, 
+                        CheckoutDate = new DateTime(2024, 1, 24),
+                        DueDate = new DateTime(2024, 1, 30),
+                        ReturnDate = null }  }},
             new Media { MediaID = 2, MediaTypeID = 2, IsArchived = false, Title = "Swordfish",
-                CheckoutLogs = new List<CheckoutLog> { 
+                CheckoutLogs = new List<CheckoutLog> {
                     new CheckoutLog {
                     CheckoutDate = new DateTime(2024, 1, 4),
                     DueDate = new DateTime(2024, 1, 11),

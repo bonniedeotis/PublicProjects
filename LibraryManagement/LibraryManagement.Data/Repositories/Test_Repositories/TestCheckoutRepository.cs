@@ -1,49 +1,43 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Data.Repositories.Test_Repositories
 {
     public class TestCheckoutRepository : ICheckoutRepository
     {
-        List<CheckoutLog> checkoutLogs = new List<CheckoutLog> { 
-            new CheckoutLog 
-            { 
-                CheckoutLogID = 1, MediaID = 1, BorrowerID = 1, 
-                CheckoutDate = new DateTime(2024,1,3), 
-                DueDate = new DateTime(2024,1,10), 
-                ReturnDate = null, 
-                Media = new Media{ IsArchived = false},
-                Borrower = new Borrower{BorrowerID = 1, Email = "john@email.com"}
-            }, 
+        List<CheckoutLog> checkoutLogs = new List<CheckoutLog> {
             new CheckoutLog
             {
-                CheckoutLogID = 2, MediaID = 2, BorrowerID = 1, 
-                CheckoutDate = new DateTime(2024,1,3), 
-                DueDate = new DateTime(2024,1,10), 
+                CheckoutLogID = 1, MediaID = 1, BorrowerID = 1,
+                CheckoutDate = new DateTime(2024,1,3),
+                DueDate = new DateTime(2024,1,10),
+                ReturnDate = null,
+                Media = new Media{ IsArchived = false},
+                Borrower = new Borrower{BorrowerID = 1, Email = "john@email.com"}
+            },
+            new CheckoutLog
+            {
+                CheckoutLogID = 2, MediaID = 2, BorrowerID = 1,
+                CheckoutDate = new DateTime(2024,1,3),
+                DueDate = new DateTime(2024,1,10),
                 ReturnDate = new DateTime(2024,1,9),
                 Media = new Media{ IsArchived = true},
                 Borrower = new Borrower{BorrowerID = 1, Email = "john@email.com"}
             },
             new CheckoutLog
             {
-                CheckoutLogID = 3, MediaID = 3, BorrowerID = 2, 
-                CheckoutDate = new DateTime(2024,1,3), 
-                DueDate = new DateTime(2024,1,10), 
+                CheckoutLogID = 3, MediaID = 3, BorrowerID = 2,
+                CheckoutDate = new DateTime(2024,1,3),
+                DueDate = new DateTime(2024,1,10),
                 ReturnDate = new DateTime(2024,1,9),
                 Media = new Media{ IsArchived = false},
                 Borrower = new Borrower{BorrowerID = 2, Email = "jane@email.com"}
             },
             new CheckoutLog
             {
-                CheckoutLogID = 4, MediaID = 4, BorrowerID = 3, 
-                CheckoutDate = new DateTime(2024,1,31), 
-                DueDate = new DateTime(2024,2,6), 
+                CheckoutLogID = 4, MediaID = 4, BorrowerID = 3,
+                CheckoutDate = new DateTime(2024,1,31),
+                DueDate = new DateTime(2024,2,6),
                 ReturnDate = null,
                 Media = new Media{ IsArchived = false},
                 Borrower = new Borrower{BorrowerID = 3, Email = "sam@email.com"}

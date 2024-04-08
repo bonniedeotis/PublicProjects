@@ -1,8 +1,6 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Application.Repositories;
 using LibraryManagement.Core.Interfaces.Services;
-using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.DataAnnotations;
 
 namespace LibraryManagement.Application.Services
 {

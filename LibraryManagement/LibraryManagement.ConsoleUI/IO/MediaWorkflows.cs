@@ -1,13 +1,5 @@
 ﻿using LibraryManagement.Core.Entities;
 using LibraryManagement.Core.Interfaces.Services;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace LibraryManagement.ConsoleUI.IO
 {
@@ -124,7 +116,7 @@ namespace LibraryManagement.ConsoleUI.IO
             Console.WriteLine();
 
             DisplayAllMediaByType(service);
-            
+
             do
             {
                 var id = Utilities.GetPositiveInteger("\nSelect the ID of the item you want to edit: ");
@@ -142,7 +134,7 @@ namespace LibraryManagement.ConsoleUI.IO
                             break;
                         }
                         if (fieldToEdit == "M")
-                        {  
+                        {
                             Utilities.DisplayTypeOptions();
                             item.Data.MediaTypeID = Utilities.GetPositiveInteger("Enter new type: ");
                             break;
@@ -252,7 +244,7 @@ namespace LibraryManagement.ConsoleUI.IO
         public static void DisplayAllMediaByType(IMediaService service)
         {
             bool validChoice = false;
-            
+
             do
             {
                 var choice = Utilities.GetRequiredString("Select type of media: (B)ook, (D)VD, or Digital (M)edia: ").ToUpper();

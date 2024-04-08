@@ -1,15 +1,8 @@
 ﻿using LibraryManagement.Application.Services;
 using LibraryManagement.Core.Interfaces.Application;
 using LibraryManagement.Core.Interfaces.Services;
-using LibraryManagement.Data.Repositories;
 using LibraryManagement.Data.Repositories.DapperAndADO;
 using LibraryManagement.Data.Repositories.EF_Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagement.Application
 {

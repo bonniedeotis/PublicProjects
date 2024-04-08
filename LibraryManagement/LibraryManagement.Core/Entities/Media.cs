@@ -1,7 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace LibraryManagement.Core.Entities
+﻿namespace LibraryManagement.Core.Entities
 {
     public class Media
     {
