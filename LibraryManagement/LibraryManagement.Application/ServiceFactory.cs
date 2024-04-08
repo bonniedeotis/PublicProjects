@@ -61,12 +61,12 @@ namespace LibraryManagement.Application
             if (mode == DatabaseMode.ORM)
             {
                 return new CheckoutService(
-                    new EFCheckoutRepository(_config.GetConnectionString()));
+                    new EFCheckoutRepository(_config.GetConnectionString()), new EFMediaRepository(_config.GetConnectionString()));
             }
             else
             {
                 return new CheckoutService(
-                    new DapperCheckoutRepository(_config.GetConnectionString()));
+                    new DapperCheckoutRepository(_config.GetConnectionString()), new DapperMediaRepository(_config.GetConnectionString()));
             }
         }
     }

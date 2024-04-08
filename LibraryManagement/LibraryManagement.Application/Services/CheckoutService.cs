@@ -11,9 +11,10 @@ namespace LibraryManagement.Application.Services
         private readonly ICheckoutRepository _checkoutRepository;
         private readonly IMediaRespository _mediaRepository;
 
-        public CheckoutService(ICheckoutRepository checkoutRepository)
+        public CheckoutService(ICheckoutRepository checkoutRepository, IMediaRespository mediaRepository)
         {
             _checkoutRepository = checkoutRepository;
+            _mediaRepository = mediaRepository;
         }
 
         public Result<DateTime> Checkout(int itemID, string email)
