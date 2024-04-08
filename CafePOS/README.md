@@ -2,6 +2,7 @@
 ## N-tier Project w/ Console Interface
 ### Features
 * N-Tier Architecture (Repository, Service, & UI layers + a Core layer for shared resources)
+* Entity Framework + LINQ
 * Menu changes based on time of day and has 4 different menus
 * Basic sales reporting
 * Training mode that allows full functionality of the system without affecting the database
