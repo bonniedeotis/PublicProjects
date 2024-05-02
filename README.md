@@ -1,5 +1,5 @@
 # Project Showcase
-Welcome! These are a few examples of projects that I have created while learning C#, ASP.NET and full-stack development. Let me tell you a bit about what each one is about!
+Welcome! These are a few examples of projects that I have created while learning C#, ASP.NET and full-stack development. Let me tell you a bit about each one!
 
 ## Student Admissions
 #### *Full-stack .NET Project*
