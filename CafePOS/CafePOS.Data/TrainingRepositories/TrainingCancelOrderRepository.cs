@@ -21,7 +21,6 @@ namespace CafePOS.Data.TrainingRepositories
             var order = FakeDb.cafeOrders.First(co => co.OrderID == orderId);
             FakeDb.cafeOrders.Remove(order);
 
-            var o = FakeDb.cafeOrders;
         }
 
         public List<CafeOrder> GetOpenOrders()
